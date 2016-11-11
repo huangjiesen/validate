@@ -83,22 +83,22 @@ $.extend( $.fn.validate.style,{
 ```
 
 ###属性：
-属性名     |属性值类型                |描述                                           |默认值  
---------- |
-trim      |boolean                  |是否去掉前值后空格                               |true
-required  |boolean                  |是否必填                                        |false
-validType |function,string,string[] |验证类型，可以指定名称或直接指定方法、多个名称时用数组|null
-msg       |string,string[],{}       |消息提示对象。作为第二个参数回传给事件回调函数       |null
+| 属性名     |属性值类型                |描述                                           |默认值|  
+| ---------- | ---------- | ---------- | ---------- |
+| trim      |boolean                  |是否去掉前值后空格                               |true |
+| required  |boolean                  |是否必填                                        |false |
+| validType |function,string,string[] |验证类型，可以指定名称或直接指定方法、多个名称时用数组|null |
+| msg       |string,string[],{}       |消息提示对象。作为第二个参数回传给事件回调函数       |null |
 
 ###事件：
-事件名     | 参数            |  描述  
---------- |
-onBefore  |target,msg       |在验证一个字段之前触发
-onEmpty   |target,msg       |在验证一个字段为空触发
-onInvalid |target,msg       |在验证一个字段为不匹配触发
+| 事件名     | 参数            |  描述  |
+| --------- | --------- | --------- |
+| onBefore  |target,msg       |在验证一个字段之前触发 |
+| onEmpty   |target,msg       |在验证一个字段为空触发 |
+| onInvalid |target,msg       |在验证一个字段为不匹配触发 |
 
 ###事件：
-方法名     | 方法属性            |  描述  
---------- |
-validate  |options             |验证文本框的内容是否有效
-destroy   |none                |销毁验证
+| 方法名     | 方法属性            |  描述   |
+| --------- |--------- |--------- |
+| validate  |options             |验证文本框的内容是否有效 |
+| destroy   |none                |销毁验证 |
