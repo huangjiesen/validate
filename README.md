@@ -47,7 +47,7 @@ $("[name='even']").validate({
 ``` javascript
 $.extend($.fn.validate.rules, {
     minLength:function(value,param){
-        return value > param;
+        return value > param[0];
     }
 });
 $("[name='username']").validate({
@@ -69,14 +69,13 @@ $.extend( $.fn.validate.style,{
         target.removeClass("warn").addClass("ok");
     },
     // 验证不通过时的验证框处理
-    error:function (target,msg) {
+    error:function (target,msg,isEmpty) {
         target.removeClass("ok").addClass("warn");
     },
     // 获取焦点时的验证框处理
     focus:function (target,msg) {
         target.removeClass("ok").removeClass("warn")
-    }
-    ,
+    },
     //如果不希望在失焦时进行验证动作可重写为null
     focusout:null
 });

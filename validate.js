@@ -1,20 +1,5 @@
 (function($){
     /**
-     * 非空校验
-     * @param obj 要校验的表彰
-     * @param rule 验证规则对象
-     * @returns {boolean} 值非空返回true、否则返回false
-     */
-    var required = function (obj,rule) {
-        if(obj.val() == "") {
-            //校验失败的回调
-            rule.onEmpty && rule.onEmpty(obj,rule.msg);
-            return false;
-        }
-        return true;
-    };
-
-    /**
      * 执行校验规则对表单值进行校验
      * @param value 表单值
      * @param rule 校验规则类型
@@ -52,7 +37,7 @@
      */
     var validate = function (obj) {
         //获取当前表单校验规则
-        var rule=$.data(obj,"rule");
+        var rule=obj.data("rule");
         //校验前回调
         rule.onBefore && rule.onBefore(obj,rule.msg);
 
@@ -63,10 +48,17 @@
         }
 
         //非空校验
-        if(rule.required && !required(obj,rule)) {
-            return false;
+        if(value == "") {
+            if(rule.required) {
+                //校验失败的回调
+                rule.onEmpty && rule.onEmpty(obj,rule.msg);
+                rule.isEmpty=true;
+                return false;
+            }
+            return true;
         }
 
+        rule.isEmpty=false;
         //如果指定了校验类型、则进行校验
         if(rule.validType) {
             //变量声明：校验类型、校验是否通过、当前执行校验的类型
@@ -113,7 +105,7 @@
      * @param rule
      */
     var bindRule = function (obj,rule) {
-        $.data(obj, "rule", rule);
+        obj.data("rule", rule);
         unBind(obj);
         obj.bind("focus",function () {
             $.fn.validate.style.focus(obj,rule.msg);
@@ -129,7 +121,7 @@
      * @param target
      */
     var unBind = function (target) {
-        $.data(target,"rule",undefined);
+        target.data("rule",undefined);
         target.unbind("focus", $.fn.validate.style.focus);
         target.unbind("focusout", $.fn.validate.style.focusout);
     };
@@ -143,7 +135,7 @@
         if(typeof options == "string"){
             //如果传入了传入了两个参数、则以为第二个参数是验证规则
             if(arguments.length==2) {
-                var opt = $.data(this,"rule") || $.fn.validate.defaults;
+                var opt = this.data("rule") || $.fn.validate.defaults;
                 bindRule(this, $.extend({},opt,arguments[1]));
             }
 
@@ -191,14 +183,14 @@
      */
     $.fn.validate.method = {
         validate:function (obj) {
-            var msg=$.data(obj,"rule").msg;
+            var rule = obj.data("rule");
             if(validate(obj)) {
                 //执行显示校验成功的样式处理方法
-                $.fn.validate.style.ok(obj,msg);
+                $.fn.validate.style.ok(obj,rule.msg);
                 return true;
             }
             //执行显示校验失败的样式处理方法
-            $.fn.validate.style.error(obj,msg);
+            $.fn.validate.style.error(obj,rule.msg,rule.isEmpty);
             return false;
         },
         destroy:unBind
@@ -257,3 +249,4 @@
         return obj;
     };
 })(jQuery);
+
