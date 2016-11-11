@@ -101,4 +101,11 @@ $.extend( $.fn.validate.style,{
 | 方法名     | 方法属性            |  描述   |
 | --------- |--------- |--------- |
 | validate  |options             |验证文本框的内容是否有效 |
-| destroy   |none                |销毁验证 |
+| destroy   |none                |销毁验证 |   
+
+-----   
+
+###表单值序列化成json对象
+```javascript
+var jsonObj = $("form").formToJson();
+```

@@ -106,6 +106,7 @@
         return true;
     };
 
+
     /**
      * 给表单元素绑定规则
      * @param obj
@@ -113,22 +114,24 @@
      */
     var bindRule = function (obj,rule) {
         $.data(obj, "rule", rule);
-        obj.unbind("focus", $.fn.validate.style.focus)
-        .bind(
-            "focus",
-            function () {
-                $.fn.validate.style.focus(obj,rule.msg);
-            }
-        );
+        unBind(obj);
+        obj.bind("focus",function () {
+            $.fn.validate.style.focus(obj,rule.msg);
+        });
         if($.fn.validate.style.focusout) {
-            obj.unbind("focusout", $.fn.validate.style.focusout)
-            .bind(
-                "focusout",
-                function () {
-                    $.fn.validate.style.focusout(obj,rule.msg);
-                }
-            );
+            obj.bind("focusout",function () {
+                $.fn.validate.style.focusout(obj,rule.msg);
+            });
         }
+    };
+    /**
+     * 解绑验证规则
+     * @param target
+     */
+    var unBind = function (target) {
+        $.data(target,"rule",undefined);
+        target.unbind("focus", $.fn.validate.style.focus);
+        target.unbind("focusout", $.fn.validate.style.focusout);
     };
 
     /**
@@ -143,6 +146,7 @@
                 var opt = $.data(this,"rule") || $.fn.validate.defaults;
                 bindRule(this, $.extend({},opt,arguments[1]));
             }
+
             //执行方法
             var method = $.fn.validate.method[options];
             if(method) {
@@ -197,9 +201,7 @@
             $.fn.validate.style.error(obj,msg);
             return false;
         },
-        destroy:function (obj) {
-            $.data(obj,"rule",undefined);
-        }
+        destroy:unBind
     };
 
     /**
@@ -225,17 +227,8 @@
         phone:function (value) {
             return /^1(3|4|5|7|8)\d{9}$/.test(value);
         },
-        sms_code:function (value) {
-            return /^\d{6}$/.test(value);
-        },
-        img_code:function (value) {
-            return /^[A-Za-z0-9]{4}$/.test(value);
-        },
         email:function (value) {
             return /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(value);
-        },
-        realname:function (value) {
-            return /^[\u4e00-\u9fa5]{2,6}$/.test(value);
         },
         url:function (value) {
             return /^https?:\/\/([\dA-Za-z\.-]+)\.([A-Za-z\.]{2,6})([\/\w \.-]*)*\/?(\?.+)?$/.test(value);
