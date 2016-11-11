@@ -88,7 +88,7 @@ $.extend( $.fn.validate.style,{
 | trim      |boolean                  |是否去掉前值后空格                               |true |
 | required  |boolean                  |是否必填                                        |false |
 | validType |function,string,string[] |验证类型，可以指定名称或直接指定方法、多个名称时用数组|null |
-| msg       |string,string[],{}       |消息提示对象。作为第二个参数回传给事件回调函数       |null |
+| msg       |string,string[],object   |消息提示对象。作为第二个参数回传给事件回调函数       |null |
 
 ###事件：
 | 事件名     | 参数            |  描述  |
