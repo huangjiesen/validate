@@ -43,7 +43,7 @@ $("[name='even']").validate({
 - length[0,100]：允许在x到x之间个字符。
 - phone：配置11位手机号码。
 
-自定义验证规则，需要重写$.fn.validate.rules中定义的验证器函数。例如，定义一个最小长度(minLength)的自定义验证：
+自定义验证规则，需要重写`$.fn.validate.rules`中定义的验证器函数。例如，定义一个最小长度(`minLength`)的自定义验证：
 ``` javascript
 $.extend($.fn.validate.rules, {
     minLength:function(value,param){
@@ -61,7 +61,7 @@ $("[name='username']").validate({
 ```
 
 ###全局验证框状态样式：
-验证框有4种状态：获取焦点、验证匹配、验证匹配及失去焦点。本插件默认只实现了在验证框失去焦点时对验证框进行验证，如果不希望在失焦时进行验证动作可重写为null，其它三个状态未实现、使用时可通过重写全局的$.fn.validate.style实现各种状态的UI提示。
+验证框有4种状态：`获取焦点`、`验证匹配`、`验证匹配`及`失去焦点`。本插件默认只实现了在验证框失去焦点时对验证框进行验证，如果不希望在失焦时进行验证动作可重写为null，其它三个状态未实现、使用时可通过重写全局的`$.fn.validate.style`实现各种状态的UI提示。
 ``` javascript
 $.extend( $.fn.validate.style,{
     // 验证通过时的验证框处理
