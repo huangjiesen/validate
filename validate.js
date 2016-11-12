@@ -226,7 +226,7 @@
             return /^https?:\/\/([\dA-Za-z\.-]+)\.([A-Za-z\.]{2,6})([\/\w \.-]*)*\/?(\?.+)?$/.test(value);
         },
         length:function(value,param){
-            return value >= param[0] && value <= param[1];
+            return value.length >= param[0] && value.length <= param[1];
         }
     };
 
