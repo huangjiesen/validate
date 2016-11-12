@@ -47,7 +47,7 @@ $("[name='even']").validate({
 ``` javascript
 $.extend($.fn.validate.rules, {
     minLength:function(value,param){
-        return value > param[0];
+        return value.length > param[0];
     }
 });
 $("[name='username']").validate({
