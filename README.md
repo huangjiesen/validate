@@ -1,11 +1,11 @@
 # 表单验证框插件
 [在线演示](http://jiesenboor.github.io/other/demo/validate/index.html) 
    
-###简介：
+### 简介：
 - 这是基于`jquery`的表单验证框插件,支持验证规则扩展、自定义各验证状态的UI提示。
 - 将表单值序列化成json对象
 
-###使用方法：
+### 使用方法：
 简单的手机验证框声明、并验证
 ``` javascript
 var isOk = $("[name='phone']").validate("validate",{
@@ -35,7 +35,7 @@ $("[name='even']").validate({
 });
 ```
 
-###验证规则：
+### 验证规则：
 验证规则是根据使用需求和验证类型属性来定义的，这些规则已经实现：
 
 - email：匹配E-Mail的正则表达式规则。
@@ -60,7 +60,7 @@ $("[name='username']").validate({
 });
 ```
 
-###全局验证框状态样式：
+### 全局验证框状态样式：
 验证框有4种状态：`获取焦点`、`验证匹配`、`验证匹配`及`失去焦点`。本插件默认只实现了在验证框失去焦点时对验证框进行验证，如果不希望在失焦时进行验证动作可重写为null，其它三个状态未实现、使用时可通过重写全局的`$.fn.validate.style`实现各种状态的UI提示。
 ``` javascript
 $.extend( $.fn.validate.style,{
@@ -81,7 +81,7 @@ $.extend( $.fn.validate.style,{
 });
 ```
 
-###属性：
+### 属性：
 
 | 属性名     |属性值类型                |描述                                           |默认值|  
 | ---------- | ---------- | ---------- | ---------- |
@@ -90,7 +90,7 @@ $.extend( $.fn.validate.style,{
 | validType |function,string,string[] |验证类型，可以指定名称或直接指定方法、多个名称时用数组|null |
 | msg       |string,string[],object   |消息提示对象。作为第二个参数回传给事件回调函数       |null |
 
-###事件：
+### 事件：
 
 | 事件名     | 参数            |  描述  |
 | --------- | --------- | --------- |
@@ -98,7 +98,7 @@ $.extend( $.fn.validate.style,{
 | onEmpty   |target,msg       |在验证一个字段为空触发 |
 | onInvalid |target,msg       |在验证一个字段为不匹配触发 |
 
-###事件：
+### 事件：
 
 | 方法名     | 方法属性            |  描述   |
 | --------- |--------- |--------- |
@@ -107,7 +107,7 @@ $.extend( $.fn.validate.style,{
 
 -----   
 
-###表单值序列化成json对象
+### 表单值序列化成json对象
 ```javascript
 var jsonObj = $("form").formToJson();
 ```
