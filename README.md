@@ -82,6 +82,7 @@ $.extend( $.fn.validate.style,{
 ```
 
 ###属性：
+
 | 属性名     |属性值类型                |描述                                           |默认值|  
 | ---------- | ---------- | ---------- | ---------- |
 | trim      |boolean                  |是否去掉前值后空格                               |true |
@@ -90,6 +91,7 @@ $.extend( $.fn.validate.style,{
 | msg       |string,string[],object   |消息提示对象。作为第二个参数回传给事件回调函数       |null |
 
 ###事件：
+
 | 事件名     | 参数            |  描述  |
 | --------- | --------- | --------- |
 | onBefore  |target,msg       |在验证一个字段之前触发 |
@@ -97,6 +99,7 @@ $.extend( $.fn.validate.style,{
 | onInvalid |target,msg       |在验证一个字段为不匹配触发 |
 
 ###事件：
+
 | 方法名     | 方法属性            |  描述   |
 | --------- |--------- |--------- |
 | validate  |options             |验证文本框的内容是否有效 |
